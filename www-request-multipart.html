@@ -74,7 +74,7 @@
     <div class="form-tips" id="tip-json" hidden><span data-i18n="httpin.tip.req"></span></div>
 </script>
 
-<script type="text/x-red" data-help-name="www-request">
+<script type="text/x-red" data-help-name="www-request-multipart">
     <p>Provides a node for making http requests.</p>
     <p>The URL and HTTP method can be configured in the node, if they are left blank they should be set in an incoming message on <code>msg.url</code> and <code>msg.method</code>:</p>
     <ul>
@@ -100,7 +100,7 @@
 </script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('www-request',{
+    RED.nodes.registerType('www-request-multipart',{
         category: 'function',
         color:"rgb(231, 231, 174)",
         defaults: {
@@ -119,7 +119,7 @@
         outputs:1,
         icon: "white-globe.png",
         label: function() {
-            return this.name|| "www request";
+            return this.name|| "multipart request";
         },
         labelStyle: function() {
             return this.name?"node_label_italic":"";
