@@ -1,7 +1,6 @@
 "use strict";
 
 var request = require('request');
-var mustache = require('mustache');
 
 module.exports = function (RED) {
 
@@ -34,9 +33,12 @@ module.exports = function (RED) {
       if (msg.url && nodeUrl && (nodeUrl !== msg.url)) { // revert change below when warning is finally removed
         node.warn(RED._("common.errors.nooverride"));
       }
-      if (isTemplatedUrl) {
-        url = mustache.render(nodeUrl, msg);
-      }
+
+      var re = new RegExp("\\{\\{\\{(" + Object.keys(msg).join("|") + ")\\}\\}\\}", "g");
+      url = url.replace(re, function (a, b) {
+        return msg[b];
+      });
+
       if (!url) {
         node.error(RED._("httpin.errors.no-url"), msg);
         node.status({
