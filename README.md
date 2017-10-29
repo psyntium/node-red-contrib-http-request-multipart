@@ -12,7 +12,7 @@ Based on the node-red core node for performing http/https requests and on the fa
 ## Why this module ?
 Request became a popular and proven simplified HTTP Client to make http(s) calls. It supports a lot of features/options for advanced usage. 
 
-A simple example : The node-red-contrib-http-request module support HTTPS on HTTP proxy using CONNECT request. This is not feasible using the Core Node-RED HTTP Request module.  
+A simple example : The node-red-contrib-http-request-multipart module support HTTPS on HTTP proxy using CONNECT request. This is not feasible using the Core Node-RED HTTP Request module.  
 
 By contributing to our http request node, you'll be supporting an evolutive and robust HTTP client for Node-RED. 
 

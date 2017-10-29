@@ -90,6 +90,20 @@
     <code>example.com/{{{topic}}}</code>, it will have the value of <code>msg.topic</code> automatically inserted.
     Using {{{...}}} prevents mustache from escaping characters like / & etc.</p>
     <p>
+    <p>In order to send a buffer data-type in the payload, it has to follow the following format:<pre>
+{
+    "&lt;key0&gt;" : "&lt;value0&gt;",
+    "&lt;key1&gt;" : {
+        "value" : "&lt;BUFFER&gt;",
+        "options" : {
+            "filename" : "&lt;filename&gt;",
+            "contentType" : "&lt;content-type&gt;",
+        }
+    }
+}
+        </pre>
+        So, the <code>&lt;BUFFER&gt;</code>, <code>&lt;filename&gt;</code> and <code>&lt;content-type&gt;</code> are the required data.
+    </p>
     The output message contains the following properties:
     <ul>
         <li><code>payload</code> is the body of the response</li>

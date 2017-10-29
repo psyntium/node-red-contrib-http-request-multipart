@@ -169,7 +169,7 @@ module.exports = function (RED) {
       if (opts.headers['content-type'] == 'multipart/form-data') {
         var form = req.form();
         for (var i in msg.payload) {
-          if (i == "file")
+          if (msg.payload[i] && msg.payload[i].value && Buffer.isBuffer(msg.payload[i].value))
             form.append(i, msg.payload[i].value, msg.payload[i].options || {});
           else
             form.append(i, msg.payload[i]);
