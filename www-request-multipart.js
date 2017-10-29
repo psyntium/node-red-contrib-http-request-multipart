@@ -117,7 +117,7 @@ module.exports = function (RED) {
         tlsNode.addTLSOptions(opts);
       }
 
-      request(opts, function (error, response, body) {
+      var req = request(opts, function (error, response, body) {
         node.status({});
         if (error) {
           if (error.code === 'ETIMEDOUT') {
@@ -165,7 +165,16 @@ module.exports = function (RED) {
           }
           node.send(msg);
         }
-      })
+      });
+      if (opts.headers['content-type'] == 'multipart/form-data') {
+        var form = req.form();
+        for (var i in msg.payload) {
+          if (i == "file")
+            form.append(i, msg.payload[i].value, msg.payload[i].options || {});
+          else
+            form.append(i, msg.payload[i]);
+        }
+      }
     });
   }
 
